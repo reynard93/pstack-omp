@@ -14,15 +14,21 @@ fork it. improve it. make it yours. PRs are welcome!
 
 > this is a port of [pstack](https://github.com/cursor/plugins/tree/main/pstack) (upstream commit `e43c7ee`) to [omp](https://github.com/can1357/oh-my-pi). the skills, playbooks, and principles are poteto's. the port swaps cursor's tools for omp primitives: the `task` tool and agent definitions for subagents, `ask` and `todo`, `skill://` references, omp model roles for per-seat models, and async `bash` jobs, `/goal`, and `/loop` for long runs. cursor-only pieces (cloud agents, Origin, automations, bot webhooks) are gone.
 
+> **this fork** ([reynard93/pstack-omp](https://github.com/reynard93/pstack-omp)) adds three things to [benkraus/pstack-omp](https://github.com/benkraus/pstack-omp):
+>
+> - **auto-routing.** a small omp extension ([`omp/index.ts`](./omp/index.ts)) adds [a routing instruction](./omp/routing.md) to every main session's system prompt, so multi-file work, design choices, and bugs with unknown causes enter `poteto-mode` without typing `/skill:poteto-mode`. subagents don't get it. set `PSTACK_ROUTING=off` to turn it off.
+> - **thermos.** `thermos`, `thermo-nuclear-review`, and `thermo-nuclear-code-quality-review` from cursor's thermos plugin. `thermos` runs both reviews in parallel on the `pstack-judge` seat.
+> - **pr kit.** `fix-ci`, `get-pr-comments`, `make-pr-easy-to-review`, and `what-did-i-get-done` from cursor-team-kit, verbatim.
+
 ## install
 
 ```
-/marketplace add benkraus/pstack-omp
+/marketplace add reynard93/pstack-omp
 /marketplace install pstack@pstack-omp
 /reload-plugins
 ```
 
-or from a shell: `omp plugin marketplace add benkraus/pstack-omp && omp plugin install pstack@pstack-omp`. a local checkout works too: `/marketplace add ~/Code/pstack-omp`.
+or from a shell: `omp plugin marketplace add reynard93/pstack-omp && omp plugin install pstack@pstack-omp`. a local checkout works too: `/marketplace add ~/Code/pstack-omp`.
 
 skills show up as `/skill:<name>` commands (on by default via `skills.enableSkillCommands`). the agents show up in the `task` tool and the `/agents` hub.
 
@@ -142,6 +148,13 @@ the full rules and playbooks live in [`skills/poteto-mode/SKILL.md`](./skills/po
 | [`/skill:unslop`](./skills/unslop/SKILL.md) | you're cleaning up writing. removes AI tells. |
 | [`/skill:bro`](./skills/bro/SKILL.md) | you want the last message restated in plain human language, no jargon. |
 | [`/skill:technical-writing`](./skills/technical-writing/SKILL.md) | layered doc standard (Diátaxis + Google developer style + STE + Global English) for docs, RFCs, readmes, PR descriptions, commit messages. |
+| [`/skill:thermos`](./skills/thermos/SKILL.md) | you want a branch audited twice in parallel: bugs and security, plus code quality. one synthesized verdict. |
+| [`/skill:thermo-nuclear-review`](./skills/thermo-nuclear-review/SKILL.md) | you want one exhaustive bug, breakage, security, devex, and feature-leak audit of a branch's diff. |
+| [`/skill:thermo-nuclear-code-quality-review`](./skills/thermo-nuclear-code-quality-review/SKILL.md) | you want a harsh maintainability and structure review of a diff, hunting for code-judo simplifications. |
+| [`/skill:fix-ci`](./skills/fix-ci/SKILL.md) | your pr's checks are red and you want them fixed one failure at a time until green. |
+| [`/skill:get-pr-comments`](./skills/get-pr-comments/SKILL.md) | you want the active pr's review feedback grouped into an action list. |
+| [`/skill:make-pr-easy-to-review`](./skills/make-pr-easy-to-review/SKILL.md) | you want a pr's history, description, and reviewer notes tidied without changing behavior. |
+| [`/skill:what-did-i-get-done`](./skills/what-did-i-get-done/SKILL.md) | you want a short status update from your commits over a time range. |
 
 </details>
 
@@ -272,4 +285,4 @@ models are configurable too. type [`/skill:setup-pstack`](./skills/setup-pstack/
 
 ## license
 
-MIT. upstream pstack is © Lauren Tan (poteto), see [LICENSE](./LICENSE).
+MIT. upstream pstack is © Lauren Tan (poteto), see [LICENSE](./LICENSE). the thermos skills are © Cursor, see [LICENSE-thermos](./LICENSE-thermos); the pr kit skills are © Cursor, see [LICENSE-cursor-team-kit](./LICENSE-cursor-team-kit).

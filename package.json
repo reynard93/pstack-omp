@@ -1,0 +1,9 @@
+{
+  "name": "pstack",
+  "version": "0.15.9-omp.1-rey.1",
+  "private": true,
+  "type": "module",
+  "omp": {
+    "extensions": ["./omp/index.ts"]
+  }
+}

@@ -1,22 +1,22 @@
 {
 	"name": "pstack-omp",
 	"owner": {
-		"name": "Ben Kraus"
+		"name": "reynard93"
 	},
 	"metadata": {
-		"description": "pstack for omp: poteto's rigorous agent workflows, ported from the Cursor plugin."
+		"description": "pstack for omp: poteto's agent workflows. reynard93 fork of benkraus/pstack-omp with auto-routing, thermos, and the cursor-team-kit PR skills."
 	},
 	"plugins": [
 		{
 			"name": "pstack",
 			"source": "./",
-			"version": "0.15.9-omp.1",
+			"version": "0.15.9-omp.1-rey.1",
 			"description": "if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
 			"author": {
 				"name": "Lauren Tan"
 			},
-			"homepage": "https://github.com/benkraus/pstack-omp",
-			"repository": "https://github.com/benkraus/pstack-omp",
+			"homepage": "https://github.com/reynard93/pstack-omp",
+			"repository": "https://github.com/reynard93/pstack-omp",
 			"license": "MIT",
 			"category": "development",
 			"keywords": ["pstack", "poteto-mode", "workflow", "principles", "subagents", "unslop"]
