@@ -32,6 +32,18 @@ or from a shell: `omp plugin marketplace add reynard93/pstack-omp && omp plugin 
 
 skills show up as `/skill:<name>` commands (on by default via `skills.enableSkillCommands`). the agents show up in the `task` tool and the `/agents` hub.
 
+### updating this fork
+
+to pull in benkraus's future changes, then ship them to your omp install:
+
+```sh
+git -C ~/workspace/pstack-omp pull upstream main
+git -C ~/workspace/pstack-omp push origin HEAD:main
+omp plugin upgrade pstack@pstack-omp
+```
+
+`upstream` is `benkraus/pstack-omp`, `origin` is `reynard93/pstack-omp`. resolve any conflicts in the fork-only files (`omp/`, `package.json`, `NOTICE.md`, the thermos and pr kit skills) before pushing, and bump `version` in `package.json` and `.omp-plugin/*.json` so `omp plugin upgrade` sees a new release.
+
 ## get started
 
 two steps:
