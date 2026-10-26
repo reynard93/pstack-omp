@@ -17,7 +17,7 @@ fork it. improve it. make it yours. PRs are welcome!
 > **this fork** ([reynard93/pstack-omp](https://github.com/reynard93/pstack-omp)) adds three things to [benkraus/pstack-omp](https://github.com/benkraus/pstack-omp):
 >
 > - **auto-routing.** a small omp extension ([`omp/index.ts`](./omp/index.ts)) adds [a routing instruction](./omp/routing.md) to every main session's system prompt, so multi-file work, design choices, and bugs with unknown causes enter `poteto-mode` without typing `/skill:poteto-mode`. subagents don't get it. set `PSTACK_ROUTING=off` to turn it off.
-> - **thermos.** `thermos`, `thermo-nuclear-review`, and `thermo-nuclear-code-quality-review` from cursor's thermos plugin. `thermos` runs both reviews in parallel on the `pstack-judge` seat.
+> - **thermos.** `thermos` runs correctness and maintainability reviews in parallel on the `pstack-judge` seat. Use `thermo-nuclear-review` for correctness or security alone, and `thermo-nuclear-code-quality-review` for maintainability alone. The quality rubric incorporates the former personal `-rey` variant. Findings require concrete evidence, not file-size thresholds or reviewer vote counts. Reports stay in the response unless a large audit or explicit request needs detail files.
 > - **pr kit.** `fix-ci`, `get-pr-comments`, `make-pr-easy-to-review`, and `what-did-i-get-done` from cursor-team-kit, verbatim.
 
 ## install
